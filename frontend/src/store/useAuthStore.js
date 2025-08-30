@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 // Fix the BASE_URL logic for socket connection
 const getSocketUrl = () => {
   if (import.meta.env.MODE === "development") {
-    return "https://chatapp-yrso.onrender.com";
+    return "https://chatapp-yrso.onrender.com/";
   }
   // In production, connect to the same domain (Netlify will proxy to backend)
   return window.location.origin;
