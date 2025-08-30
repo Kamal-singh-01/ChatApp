@@ -15,7 +15,7 @@ export function getReceiverSocketId(userId) {
 
 const io = new Server(server, {
   cors: {
-    origin: [process.env.CLIENT_URL || "http://localhost:5173"], // for production use your deployed frontend URL
+    origin: ["https://lambent-faun-8745ba.netlify.app" || "http://localhost:5173"], // for production use your deployed frontend URL
     methods: ["GET", "POST"],
     credentials: true
   },
