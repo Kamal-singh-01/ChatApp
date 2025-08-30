@@ -20,11 +20,12 @@ const CLIENT_URL = "https://lambent-faun-8745ba.netlify.app" || "http://localhos
 
 app.use(
   cors({
-    origin: CLIENT_URL,
+    origin: "https://lambent-faun-8745ba.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 
 app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
