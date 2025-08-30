@@ -10,10 +10,11 @@ export const useChatStore = create((set, get) => ({
   isUsersLoading: false,
   isMessagesLoading: false,
 
+  // Updated getUsers method with '/api/messages/users' route
   getUsers: async () => {
     set({ isUsersLoading: true });
     try {
-      const res = await axiosInstance.get("/messages/users");
+      const res = await axiosInstance.get("/api/messages/users"); // Added '/api'
       set({ users: res.data });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -22,10 +23,11 @@ export const useChatStore = create((set, get) => ({
     }
   },
 
+  // Updated getMessages method with '/api/messages/{userId}' route
   getMessages: async (userId) => {
     set({ isMessagesLoading: true });
     try {
-      const res = await axiosInstance.get(`/messages/${userId}`);
+      const res = await axiosInstance.get(`/api/messages/${userId}`); // Added '/api'
       set({ messages: res.data });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -33,10 +35,12 @@ export const useChatStore = create((set, get) => ({
       set({ isMessagesLoading: false });
     }
   },
+
+  // Updated sendMessage method with '/api/messages/send/{selectedUser._id}' route
   sendMessage: async (messageData) => {
     const { selectedUser, messages } = get();
     try {
-      const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
+      const res = await axiosInstance.post(`/api/messages/send/${selectedUser._id}`, messageData); // Added '/api'
       set({ messages: [...messages, res.data] });
     } catch (error) {
       toast.error(error.response.data.message);
